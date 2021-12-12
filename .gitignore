@@ -1,6 +1,6 @@
 /cmake-build-debug
 /cmake-build-debug-coverage
-/CMakeLists.txt
+#CMakeLists.txt
 out
 # IntellijIdea files
 *.iml
