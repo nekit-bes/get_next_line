@@ -1,3 +1,0 @@
-/Users/infiless/PROJECTS_21/ex_Get_Next_Line/get_next_line/cmake-build-debug-coverage/CMakeFiles/rebuild_cache.dir
-/Users/infiless/PROJECTS_21/ex_Get_Next_Line/get_next_line/cmake-build-debug-coverage/CMakeFiles/edit_cache.dir
-/Users/infiless/PROJECTS_21/ex_Get_Next_Line/get_next_line/cmake-build-debug-coverage/CMakeFiles/get_next_line.dir
