@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
 #include <stdio.h>
 #include <fcntl.h> // open
 #include <stdlib.h>
 #include <unistd.h>
-#include "get_next_line.h"
 #define BUFFER_SIZE 12
 
 char *get_next_line(int fd)
