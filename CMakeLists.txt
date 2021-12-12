@@ -1,6 +1,0 @@
-cmake_minimum_required(VERSION 3.21)
-project(get_next_line C)
-
-set(CMAKE_C_STANDARD 99)
-
-add_executable(get_next_line get_next_line.c)
