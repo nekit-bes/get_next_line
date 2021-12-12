@@ -1,2 +1,7 @@
-# Project exclude paths
-/cmake-build-debug/
+/cmake-build-debug
+/cmake-build-debug-coverage
+/CMakeLists.txt
+out
+# IntellijIdea files
+*.iml
+.idea
