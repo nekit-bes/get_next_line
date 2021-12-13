@@ -7,6 +7,8 @@ char	*ft_strchr(const char *s, int c)
 
     n = 0;
     j = c;
+    if (!s)
+        return (0);
     while (s[n])
     {
         if (s[n] == j)
