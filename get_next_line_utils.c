@@ -20,28 +20,56 @@ char	*ft_strchr(const char *s, int c)
     return (0);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-    char	*res;
-    int		w1;
-    int		w2;
+//char	*ft_strjoin(char const *s1, char const *s2)
+//{
+//    char	*res;
+//    int		w1;
+//    int		w2;
+//
+//    if (!(s1 && s2))
+//        return (NULL);
+//    res = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+//    if (!res)
+//        return (0);
+//    w1 = 0;
+//    while (s1[w1])
+//    {
+//        res[w1] = s1[w1];
+//        w1++;
+//    }
+//    w2 = 0;
+//    while (s2[w2])
+//        res[w1++] = s2[w2++];
+//    res[w1] = '\0';
+//    return (res);
+//}
 
-    if (!(s1 && s2))
-        return (NULL);
-    res = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-    if (!res)
-        return (0);
-    w1 = 0;
-    while (s1[w1])
+char	*ft_strjoin(char *left_str, char *buff)
+{
+    size_t	i;
+    size_t	j;
+    char	*str;
+
+    if (!left_str)
     {
-        res[w1] = s1[w1];
-        w1++;
+        left_str = (char *)malloc(1 * sizeof(char));
+        left_str[0] = '\0';
     }
-    w2 = 0;
-    while (s2[w2])
-        res[w1++] = s2[w2++];
-    res[w1] = '\0';
-    return (res);
+    if (!left_str || !buff)
+        return (NULL);
+    str = malloc(sizeof(char) * ((ft_strlen(left_str) + ft_strlen(buff)) + 1));
+    if (str == NULL)
+        return (NULL);
+    i = -1;
+    j = 0;
+    if (left_str)
+        while (left_str[++i] != '\0')
+            str[i] = left_str[i];
+    while (buff[j] != '\0')
+        str[i++] = buff[j++];
+    str[ft_strlen(left_str) + ft_strlen(buff)] = '\0';
+    free(left_str);
+    return (str);
 }
 
 size_t	ft_strlen(const	char *s)
@@ -52,4 +80,19 @@ size_t	ft_strlen(const	char *s)
     while (s[n])
         n++;
     return (n);
+}
+
+char	*ft_strdup(const char *s1)
+{
+    char	*str;
+    size_t	i;
+
+    i = -1;
+    str = (char *)malloc(sizeof(char) * ft_strlen(s1) + 1);
+    if (!str)
+        return (NULL);
+    while (s1[++i])
+        str[i] = s1[i];
+    str[i] = '\0';
+    return (str);
 }

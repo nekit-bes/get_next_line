@@ -15,60 +15,85 @@
 #include <fcntl.h> // open
 #include <stdlib.h>
 #include <unistd.h>
-#define BUFFER_SIZE 7
+#define BUFFER_SIZE 9999
 
-char    *new_line_separator(char    *string)
+char    *n_after(char    *string)
 {
-    char    *saved_new_line;
+    char    *str_after;
     int         n;
     int         n2;
 
     n = 0;
     while (string[n] != '\n')
         n++;
-    saved_new_line = (char *)malloc(sizeof(char) * (ft_strlen(string) - n));
-    if (!saved_new_line)
+    str_after = (char *)malloc(sizeof(char) * (ft_strlen(string) - n + 1));
+    if (!str_after)
         return (NULL);
     n2 = 0;
     while (string[n2])
-        saved_new_line[n2++] = string[++n];
-    saved_new_line[n2] = '\0';
+    {
+        str_after[n2] = string[++n];
+        n2++;
+    }
+    str_after[n2] = '\0';
     free(string);
-    printf("%s", saved_new_line);
-    return (saved_new_line);
+    return (str_after);
+}
+
+char    *n_before(char    *string)
+{
+    char    *str_before;
+    int         n;
+    int         n2;
+
+    n = 0;
+    while (string[n] != '\n')
+        n++;
+    str_before = (char *)malloc(sizeof(char) * n);
+    if (!str_before)
+        return (NULL);
+    n2 = 0;
+    while (string[n2] && string[n2] != '\n')
+    {
+        str_before[n2] = string[n2];
+        n2++;
+    }
+
+    str_before[n2] = '\0';
+    free(string);
+    return (str_before);
 }
 
 char *get_next_line(int fd)
 {
-    char            *string;
-    static char     *buffer;
-    int     n;
-    static char    *saved_new_line;
+    static char *str;
+    char        *buf;
+    char        *str_fine;
+    int         n;
 
-    buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-    if (!buffer)
-            return (NULL);
+    buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+    if (!buf)
+        return (NULL);
     n = 1;
-    while(!ft_strchr(string, '\n') && n) //если \n то в цикл не входим
+    while(!ft_strchr(str, '\n') && n != 0) //если \n то в цикл не входим
     {
-        n = read(fd, buffer, BUFFER_SIZE);
-        buffer[n] = '\0';
-        string = ft_strjoin(string, buffer);
+        n = read(fd, buf, BUFFER_SIZE);
+        buf[n] = '\0';
+        str = ft_strjoin(str, buf);
     }
-    free(buffer);
-    printf("%s\n", string);
-    saved_new_line = new_line_separator(string);
+    free(buf);
 
-    printf("%s\n", saved_new_line);
-    return (string);
+    str_fine = n_before(ft_strdup(str));
+    str = n_after(str);
+    return (str_fine);
 }
 
 int	main(void)
 {
     int	fd = open("1.txt", O_RDONLY);
-    printf("%s", get_next_line(fd));
-//    printf("%s", get_next_line(fd));
-//    printf("%s", get_next_line(fd));
+    printf("%s\n", get_next_line(fd));
+    printf("%s\n", get_next_line(fd));
+//    printf("%s\n", get_next_line(fd));
     return (0);
 }
 
