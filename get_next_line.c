@@ -6,7 +6,7 @@
 /*   By: infiless <infiless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 14:24:50 by infiless          #+#    #+#             */
-/*   Updated: 2021/12/16 12:02:36 by rbellero         ###   ########.fr       */
+/*   Updated: 2021/12/16 15:35:01 by rbellero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,22 @@ char    *n_after(char    *str)
     int         n2;
 
     n = 0;
-    while (str[n] != '\n')
+    while (str[n] != '\n' && str[n])
         n++;
+	if (!str[n])
+	{
+		free(str);
+		return (NULL);
+	}
     str_after = (char *)malloc(sizeof(char) * (ft_strlen(str) - n + 1));
     //str_after = ex_helper(str_after);
     if (!str_after)
         return (NULL);
     n2 = 0;
+	n++;
     while (str[n2])
     {
-        str_after[n2] = str[++n];
+        str_after[n2] = str[n++];
         n2++;
     }
     str_after[n2] = '\0';
@@ -69,7 +75,7 @@ char    *n_before(char    *str)
     n = 0;
     while (str[n] != '\n')
         n++;
-    str_before = (char *)malloc(sizeof(char) * n);
+    str_before = (char *)malloc(sizeof(char) * (n + 1));
     //str_before = ex_helper(str_before);
     if (!str_before)
         return (NULL);
@@ -79,10 +85,12 @@ char    *n_before(char    *str)
         str_before[n2] = str[n2];
         n2++;
     }
-	if (str[n2])
-
+	if (str[n2] == '\n')
+	{
+		str_before[n2] = str[n2];
+		n2++;
+	}
     str_before[n2] = '\0';
-    free(str);
     return (str_before);
 }
 
@@ -103,29 +111,29 @@ char *get_next_line(int fd)
     while(!ft_strchr(str, '\n') && r != 0) //если \n то в цикл не входим
     {
         r = read(fd, buf, BUFFER_SIZE);
-        if (r == -1)
+        if (r == -1 || r == 0)
         {
             free (buf);
             return (NULL);
         }
-//        r = *ex_readhelper(r, bufer);
         buf[r] = '\0';
         str = ft_strjoin(str, buf);
     }
     free(buf);
     //str_fine = ex_helper(str_fine = n_before(ft_strdup(str)));
-    str_fine = n_before(ft_strdup(str));
-    if (!str_fine)
-        return (NULL);
+//    str_fine = n_before(ft_strdup(str));
+	str_fine = n_before(str);
+//    if (!str_fine)
+//        return (NULL);
     str = n_after(str);
     return (str_fine);
 }
 
-int	main(void)
-{
-    int	fd = open("1.txt", O_RDONLY);
-    printf("%s\n", get_next_line(fd));
-    printf("%s\n", get_next_line(fd));
-    printf("%s\n", get_next_line(fd));
-    return (0);
-}
+//int	main(void)
+//{
+//    int	fd = open("1.txt", O_RDONLY);
+//    printf("%s", get_next_line(fd));
+//    printf("%s", get_next_line(fd));
+////    printf("%s\n", get_next_line(fd));
+//    return (0);
+//}
