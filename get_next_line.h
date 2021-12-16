@@ -14,7 +14,7 @@ char    *n_after(char    *string);
 //char	*ft_strchr(const char *s, int c);
 char	*ft_strchr(char *s, int c);
 //char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strjoin(char *left_str, char *buff);
+char	*ft_strjoin(char *s1, char *s2);
 //size_t	ft_strlen(const	char *s);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(char *src);

@@ -6,7 +6,7 @@
 /*   By: infiless <infiless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 14:24:50 by infiless          #+#    #+#             */
-/*   Updated: 2021/12/11 16:23:14 by infiless         ###   ########.fr       */
+/*   Updated: 2021/12/16 12:02:36 by rbellero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 #include <stdio.h>
 #include <fcntl.h> // open
 #include <unistd.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+# endif // BUFFER_SIZE
 
 //char    *ex_helper(char *ex_str)
 //{
@@ -32,52 +36,53 @@
 //    return (ex_r);
 //}
 
-char    *n_after(char    *string)
+char    *n_after(char    *str)
 {
     char    *str_after;
     int         n;
     int         n2;
 
     n = 0;
-    while (string[n] != '\n')
+    while (str[n] != '\n')
         n++;
-    str_after = (char *)malloc(sizeof(char) * (ft_strlen(string) - n + 1));
+    str_after = (char *)malloc(sizeof(char) * (ft_strlen(str) - n + 1));
     //str_after = ex_helper(str_after);
     if (!str_after)
         return (NULL);
     n2 = 0;
-    while (string[n2])
+    while (str[n2])
     {
-        str_after[n2] = string[++n];
+        str_after[n2] = str[++n];
         n2++;
     }
     str_after[n2] = '\0';
-    free(string);
+    free(str);
     return (str_after);
 }
 
-char    *n_before(char    *string)
+char    *n_before(char    *str)
 {
     char    *str_before;
     int         n;
     int         n2;
 
     n = 0;
-    while (string[n] != '\n')
+    while (str[n] != '\n')
         n++;
     str_before = (char *)malloc(sizeof(char) * n);
     //str_before = ex_helper(str_before);
     if (!str_before)
         return (NULL);
     n2 = 0;
-    while (string[n2] && string[n2] != '\n')
+    while (str[n2] && str[n2] != '\n')
     {
-        str_before[n2] = string[n2];
+        str_before[n2] = str[n2];
         n2++;
     }
+	if (str[n2])
 
     str_before[n2] = '\0';
-    free(string);
+    free(str);
     return (str_before);
 }
 
@@ -90,7 +95,7 @@ char *get_next_line(int fd)
 
     if (fd <= 0 || BUFFER_SIZE <= 0)
         return (0);
-    buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+    buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 //    bufer = ex_helper(bufer);
     if (!buf)
         return (NULL);
@@ -118,7 +123,7 @@ char *get_next_line(int fd)
 
 int	main(void)
 {
-    int	fd = open("files/empty", O_RDONLY);
+    int	fd = open("1.txt", O_RDONLY);
     printf("%s\n", get_next_line(fd));
     printf("%s\n", get_next_line(fd));
     printf("%s\n", get_next_line(fd));
