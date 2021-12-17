@@ -67,7 +67,7 @@ char    *before_n(char    *str)
     int         n;
 
     n = 0;
-    if (!str[n]) // тварь
+    if (!str[n])
         return (NULL);
     while (str[n] && str[n] != '\n')
         n++;
