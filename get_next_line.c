@@ -16,25 +16,8 @@
 #include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 41
+#  define BUFFER_SIZE 21
 # endif // BUFFER_SIZE
-
-//char    *ex_helper(char *ex_str)
-//{
-//    if (!ex_str)
-//        return (NULL);
-//    return (ex_str);
-//}
-
-//int    ex_readhelper(int ex_r,char *bufer)
-//{
-//    if (ex_r == -1)
-//    {
-//        free (bufer);
-//        return (NULL);
-//    }
-//    return (ex_r);
-//}
 
 char    *n_after(char    *str)
 {
