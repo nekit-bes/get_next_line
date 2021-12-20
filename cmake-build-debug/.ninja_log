@@ -3,3 +3,5 @@
 112	195	1639773097617289593	get_next_line	cf1776e5ac74c521
 1	112	1639773097532690135	CMakeFiles/get_next_line.dir/get_next_line.c.o	d21610e0419735ba
 0	146	1639918419000000000	build.ninja	4db26eb28e79a46
+60	140	1639922204000000000	CMakeFiles/get_next_line.dir/get_next_line_utils.c.o	1378901f85f009af
+53	146	1639922204000000000	CMakeFiles/get_next_line.dir/get_next_line.c.o	1468f73d87e635e3
