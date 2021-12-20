@@ -6,7 +6,7 @@
 /*   By: rbellero <rbellero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 16:19:05 by rbellero          #+#    #+#             */
-/*   Updated: 2021/12/19 16:19:05 by rbellero         ###   ########.fr       */
+/*   Updated: 2021/12/20 09:43:16 by rbellero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,14 @@ char	*get_next_line(int fd)
 	str_fine = before_n(str);
 	str = n_after(str);
 	return (str_fine);
+}
+
+int main(void)
+{
+	int	fd;
+
+	fd = open("1.txt", O_RDONLY);
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	return (0);
 }

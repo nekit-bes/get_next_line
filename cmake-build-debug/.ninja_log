@@ -1,7 +1,12 @@
 # ninja log v5
-2	95	1639772470970171939	CMakeFiles/get_next_line.dir/get_next_line_utils.c.o	69122d1a89b896b0
-112	195	1639773097617289593	get_next_line	cf1776e5ac74c521
-1	112	1639773097532690135	CMakeFiles/get_next_line.dir/get_next_line.c.o	d21610e0419735ba
-0	146	1639918419000000000	build.ninja	4db26eb28e79a46
+58	96	1639982808000000000	get_next_line_bonus	4b0ee4f1d9d9dd93
+0	49	1639982808000000000	CMakeFiles/get_next_line_bonus.dir/get_next_line_bonus.c.o	9e6c30b42807df68
+2	58	1639982808000000000	CMakeFiles/get_next_line_bonus.dir/get_next_line_utils_bonus.c.o	dfb4322df435cb2c
 60	140	1639922204000000000	CMakeFiles/get_next_line.dir/get_next_line_utils.c.o	1378901f85f009af
-53	146	1639922204000000000	CMakeFiles/get_next_line.dir/get_next_line.c.o	1468f73d87e635e3
+44	83	1639982612000000000	get_next_line	70913023c8522ec1
+1	44	1639982612000000000	CMakeFiles/get_next_line.dir/get_next_line.c.o	1468f73d87e635e3
+0	260	1639983004000000000	build.ninja	4ec6615bcec85ba3
+0	72	1639983004000000000	build.ninja	4ec6615bcec85ba3
+174	220	1639983004000000000	CMakeFiles/get_next_line_bonus.dir/get_next_line_utils_bonus.c.o	5402847ed748a450
+173	226	1639983004000000000	CMakeFiles/get_next_line_bonus.dir/get_next_line_bonus.c.o	173f83c07e4b7be8
+226	297	1639983004000000000	get_next_line_bonus	4b0ee4f1d9d9dd93
